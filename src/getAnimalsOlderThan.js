@@ -6,6 +6,5 @@ function getAnimalsOlderThan(animal, age) {
   const minimalAges = animalsResidents.every((specie) => specie.age > age);
   return minimalAges;
 }
-console.log(getAnimalsOlderThan('lions', 2));
 
 module.exports = getAnimalsOlderThan;
