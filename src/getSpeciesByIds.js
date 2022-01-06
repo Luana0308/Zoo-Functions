@@ -8,3 +8,5 @@ function getSpeciesByIds(...ids) {
 console.log(getSpeciesByIds());
 
 module.exports = getSpeciesByIds;
+
+// ajuda do Aluno Yuri para concluir o requisito
