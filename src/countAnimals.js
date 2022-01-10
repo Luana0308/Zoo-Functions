@@ -1,24 +1,19 @@
 const { species } = require('../data/zoo_data');
 
 function countAnimals(animal) {
-  const allAnimals = species.reduce((acc, valorAnimal) =>
-    ({ ...acc, [valorAnimal.name]: valorAnimal.residents.length }), {});
-  if (animal === undefined) {
-    return allAnimals;
+  if (!animal) {
+    const meuanimal = {};
+    species.forEach((elemento) => {
+      meuanimal[elemento.name] = elemento.residents.length;
+    });
+    return meuanimal;
   }
-  const { specie } = animal;
-  const sexAnimal = species.find((animalselected) => animalselected.name === specie);
-  const aminalsexSelected = sexAnimal.residents.reduce((acc, valor) => {
-    if (valor.sex === animal.sex) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-  if (animal.sex) return aminalsexSelected;
-  return allAnimals[specie];
+  const animalQtd = species.find((element) => animal.specie === element.name);
+  if (!animal.sex) {
+    return animalQtd.residents.length;
+  }
+  return animalQtd.residents.filter((element) => element.sex === animal.sex).length;
 }
-console.log(countAnimals({ specie: 'elephants', sex: 'male' }));
-
 module.exports = countAnimals;
 
-// ajuda da Aluna Rachel - e do grupo de estudos
+// ajuda da Aluna Rachel - e do grupo de estudos, refatorada com
